@@ -272,6 +272,7 @@ export const getEmployeesService = async (filters: Record<string, string>, offse
 
     // Add filters
     if (filters.status) {
+      // Handle case-sensitive status matching
       queries.push(Query.equal('status', filters.status));
     }
     if (filters.department) {

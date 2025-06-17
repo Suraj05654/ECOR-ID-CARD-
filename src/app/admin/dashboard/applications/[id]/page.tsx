@@ -1,5 +1,7 @@
 import { getApplicationById, updateApplicationStatus } from '@/lib/actions/application';
-import type { StoredEmployee } from '@/lib/types';
+import type { StoredEmployee, StoredApplication } from '@/lib/types';
+import type { Application } from '@/lib/new_admin_backend/types';
+import ApplicationActions from '../../../dashboard/(components)/application-actions';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -7,15 +9,6 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle, FileText, Mail, Phone, User, Users, Home, CalendarDays, Briefcase, ShieldCheck, XCircle, Edit3, Info } from 'lucide-react';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import type { Application } from '@/lib/new_admin_backend/types';
-
-export async function generateStaticParams() {
-  return [] as Array<{ id: string }>;
-}
-
-// @ts-expect-error -- directory name with parentheses confuses TS path mapping
-import ApplicationActions from '../../../(components)/application-actions';
-import type { StoredApplication } from '@/lib/types';
 
 interface DetailItemProps {
   icon: React.ReactNode;
@@ -139,7 +132,7 @@ export default async function ApplicationDetailPage({ params }: AppPageProps) {
             <div className="p-6 border-b md:border-b-0 lg:border-r">
               <h3 className="text-lg font-semibold text-primary mb-3 border-b pb-2">Contact & Address</h3>
               <DetailItem icon={<Phone size={18} />} label="Contact Number" value={application.mobile} />
-              <DetailItem icon={<Mail size={18} />} label="Email Address" value={employeeData.email || 'N/A'} />
+              <DetailItem icon={<Mail size={18} />} label="Email Address" value="N/A" />
               <DetailItem icon={<Home size={18} />} label="Present Address" value={employeeData.residentialAddress} />
               <DetailItem icon={<Home size={18} />} label="Permanent Address" value={employeeData.residentialAddress} />
             </div>

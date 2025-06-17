@@ -9,8 +9,11 @@ export async function GET(req: NextRequest) {
     const offset = parseInt(searchParams.get('offset') ?? '0', 10);
 
     const filters: Record<string, string> = {};
-    // Set status to Pending by default unless overridden
-    filters.status = searchParams.get('status') ?? 'Pending';
+    const status = searchParams.get('status');
+    // Only set status filter if it's provided and not 'all'
+    if (status && status !== 'all') {
+      filters.status = status.charAt(0).toUpperCase() + status.slice(1).toLowerCase();
+    }
     
     const department = searchParams.get('department');
     const station = searchParams.get('station');
