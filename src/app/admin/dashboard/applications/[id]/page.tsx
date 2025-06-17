@@ -139,6 +139,7 @@ export default async function ApplicationDetailPage({ params }: AppPageProps) {
             <div className="p-6 border-b md:border-b-0 lg:border-r">
               <h3 className="text-lg font-semibold text-primary mb-3 border-b pb-2">Contact & Address</h3>
               <DetailItem icon={<Phone size={18} />} label="Contact Number" value={application.mobile} />
+              <DetailItem icon={<Mail size={18} />} label="Email Address" value={employeeData.email || 'N/A'} />
               <DetailItem icon={<Home size={18} />} label="Present Address" value={employeeData.residentialAddress} />
               <DetailItem icon={<Home size={18} />} label="Permanent Address" value={employeeData.residentialAddress} />
             </div>
