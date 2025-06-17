@@ -1,7 +1,7 @@
 import { getApplicationById, updateApplicationStatus } from '@/lib/actions/application';
 import type { StoredEmployee, StoredApplication } from '@/lib/types';
 import type { Application } from '@/lib/new_admin_backend/types';
-import ApplicationActions from '../../../dashboard/(components)/application-actions';
+import ApplicationActions from '../../(components)/application-actions';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -190,4 +190,8 @@ export default async function ApplicationDetailPage({ params }: AppPageProps) {
       </Card>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  return [] as Array<{ id: string }>;
 }
